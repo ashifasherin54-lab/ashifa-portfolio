@@ -399,58 +399,27 @@ if (ticketContainer && ticketGlass && !OptimizationManager.reducedMotion) {
     });
 }
 
-// Cinematic Intro
-(() => {
-    const initIntro = () => {
-        const introOverlay = document.querySelector(".intro-overlay");
-        if (introOverlay && typeof gsap !== 'undefined') {
-            document.body.style.overflow = "hidden";
-            if (sessionStorage.getItem('introPlayed')) {
-                introOverlay.style.display = 'none';
-                document.body.style.overflow = "";
-                return;
-            }
-            sessionStorage.setItem('introPlayed', 'true');
 
-            const svgElement = introOverlay.querySelector("svg");
-            const letterA1 = introOverlay.querySelector(".letter-a1");
-            const otherLetters = introOverlay.querySelectorAll(".letter-n, .letter-f, .letter-a2, .letter-s");
 
-            introOverlay.querySelectorAll(".draw").forEach(path => {
-                const length = path.getTotalLength();
-                path.style.strokeDasharray = length;
-                path.style.strokeDashoffset = length;
-            });
+// INTRO-OVERLAY
 
-            const tl = gsap.timeline({
-                onComplete: () => {
-                    document.body.style.overflow = "";
-                    gsap.to(introOverlay, { opacity: 0, duration: 0.5, onComplete: () => introOverlay.remove() });
-                }
-            });
 
-            tl.set(letterA1, { y: -150, x: 44, opacity: 0 })
-                .to(otherLetters, { strokeDashoffset: 0, duration: 1.5, stagger: 0.1 })
-                .to(letterA1, { y: 0, opacity: 1, duration: 0.8, ease: "bounce.out", strokeDashoffset: 0 })
-                .to(letterA1, { x: 0, duration: 0.8, ease: "power3.inOut" })
-                .to([...otherLetters, letterA1], { fillOpacity: 1, duration: 0.5, stroke: "transparent" })
-                .to(svgElement, { scale: 50, opacity: 0, duration: 0.8, ease: "expo.in", filter: "blur(20px)" });
-        }
-    };
-    if (document.readyState === 'complete') setTimeout(initIntro, 100);
-    else window.addEventListener('load', () => setTimeout(initIntro, 100));
-})();
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("introOverlay").style.display = "none";
+  }, 3500);
+});
+
 // Code Card Typing Animation
 const initCodeAnimation = () => {
     const typewriter = document.getElementById('typewriter');
     if (!typewriter) return;
 
-    const code = `const Anfas = {
+    const code = `const Ashifa = {
   role: 'Creative Developer',
   skills: [
     'UI/UX Design',
-    'Frontend Dev',
-    'Motion Graphics'
+    '
   ],
   createMagic: function() {
     return 'Stunning Experiences';

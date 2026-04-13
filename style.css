@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ===============================
    LIGHT THEME â€“ WARM PREMIUM
@@ -216,6 +216,66 @@ p {
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
 }
 
+
+
+/* OVERLAY-INTROO */
+
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0b0b0b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
+    animation: introFadeOut 1s ease forwards;
+    animation-delay: 2.8s;
+}
+
+/* Inner animation */
+.intro-inner {
+    text-align: center;
+    transform: scale(0.96);
+    opacity: 0;
+    filter: blur(10px);
+
+    animation: introReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Name */
+.intro-name {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+}
+
+/* Role */
+.intro-role {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+/* Smooth reveal */
+@keyframes introReveal {
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Smooth fade out */
+@keyframes introFadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 /* ===============================
    NAV / HEADER
    =============================== */
@@ -357,8 +417,6 @@ ul {
 /* Header Styles */
 .header {
     position: fixed;
-
-
     top: 0;
     left: 0;
     right: 0;
@@ -4562,71 +4620,99 @@ body.show-reveal .cursor-image-wrapper {
 
 }
 
-/* ===============================
-   CINEMATIC INTRO ANIMATION
-   =============================== */
-* {
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background: #020617;
+    color: white;
 }
 
-/* Intro Overlay Styles (Merged) */
-.intro-overlay {
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 🌐 YOUR BACKGROUND */
+#mainContent {
+    height: 100vh;
+    background: url('your-image.jpg') center/cover no-repeat;
+}
+
+/* 🔥 OVERLAY */
+#introOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background: #000;
-    z-index: 9999;
-    z-index: 9999;
+    height: 100%;
+
+    /* ✅ DARK LAYER (FIXED ISSUE) */
+    background: rgba(0, 0, 0, 0.9);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    will-change: opacity;
-    /* Optimize fade out */
+    flex-direction: column;
+
+    z-index: 9999;
 }
 
-/* Reusing .draw styles from previous block */
-.intro-body {
-    /* Kept for reference or removing if no longer used */
-    background: #000;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+/* ✨ NAME STYLE */
+#introName {
+    font-size: 90px;
+    color: #fff;
+    letter-spacing: 12px;
+    font-weight: 300;
+
+    opacity: 0;
+    transform: scale(0.7);
+
+    /* 🔥 GLOW */
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4);
 }
 
-svg {
-    width: 70%;
-    will-change: transform;
-    /* Optimize tilt/scale */
+/* ✨ SUBTEXT */
+#tagline {
+    margin-top: 20px;
+    color: #aaa;
+    letter-spacing: 3px;
+    opacity: 0;
 }
 
-/* IMPORTANT: stroke-based animation */
-.draw {
-    fill: #ffffff;
-    fill-opacity: 0;
-    /* Hidden initially */
-    stroke: #ffffff;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: fill-opacity 0.5s ease;
-
-    /* Performance Optimizations */
-    will-change: stroke-dashoffset, fill-opacity;
-    transform: translateZ(0);
-    /* Hardware accelerate */
-    backface-visibility: hidden;
+/* 🎬 ANIMATIONS */
+.show-name {
+    animation: zoomFade 1.5s ease forwards;
 }
 
-/* Helper for filling via JS */
-.draw.filled {
-    fill-opacity: 1 !important;
+@keyframes zoomFade {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.show-tag {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.hide-overlay {
+    animation: slideUp 1.2s ease forwards;
+}
+
+@keyframes slideUp {
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
 }
 
 /* Footer Modern Layout */
@@ -4834,6 +4920,118 @@ svg {
 }
 
 /* ===============================
+   HOW WE WORK - PREMIUM DARK
+   =============================== */
+.process-section {
+    background-color: #050505;
+    padding: 100px 0;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.process-layout {
+    display: flex;
+    padding: 0 5vw;
+    gap: 80px;
+}
+
+.process-header {
+    flex: 0 0 300px;
+}
+
+.header-sticky-content {
+    position: sticky;
+    top: 15vw;
+}
+
+.process-title-main {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 800;
+    line-height: 0.9;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.process-subtitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    letter-spacing: 2px;
+}
+
+.process-cards-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.process-card {
+    flex: 1 1 400px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent-primary);
+    transform: translateY(-10px);
+}
+
+.step-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+}
+
+.card-step-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.card-step-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .process-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .process-header {
+        flex: none;
+    }
+
+    .header-sticky-content {
+        position: relative;
+        top: 0;
+    }
+}
+
+/* ===============================
    PREMIUM STUDIO FOOTER
    =============================== */
 .footer-premium-studio {
@@ -5028,33 +5226,41 @@ svg {
     transform: translateY(-5px);
 }
 
-/* Studio Social Icons */
+/* Studio Social Icons - Consolidated */
 .social-links-studio {
     display: flex;
     gap: 15px;
 }
 
 .social-links-studio a {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.7);
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.social-links-studio a i,
+.social-links-studio a svg {
+    width: 24px !important;
+    height: 24px !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #fff !important;
 }
 
 .social-links-studio a:hover {
-    background: #fff;
-    color: #000;
-    transform: scale(1.1);
-}
-
-.social-links-studio a svg {
-    width: 20px;
-    height: 20px;
+    background: var(--accent-primary);
+    color: #fff !important;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
 /* Responsive */
@@ -5796,21 +6002,7 @@ svg {
     color: #fff;
 }
 
-/* Social Links */
-.social-links-studio {
-    display: flex;
-    gap: 20px;
-}
-
-.social-links-studio a {
-    color: rgba(255, 255, 255, 0.6);
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-links-studio a:hover {
-    background-color: #6366f1;
-    color: var(--white);
-}
+/* Duplicated social links removed */
 
 /* Mobile */
 @media (max-width: 768px) {
