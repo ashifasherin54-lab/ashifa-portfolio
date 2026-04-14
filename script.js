@@ -502,7 +502,7 @@ const initContactForm = () => {
             return;
         }
 
-        const whatsappNumber = '918590468094';
+        const whatsappNumber = '918848798636';
         const text = encodeURIComponent(
             `Hello Anfas:\n\n` +
             `Name: ${name}\n` +
