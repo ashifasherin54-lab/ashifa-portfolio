@@ -452,6 +452,7 @@ ul {
 
 /* Header Styles */
 /* Header Styles */
+/* --- HEADER & NAVBAR FIXED LOGIC --- */
 .header {
     position: fixed;
     top: 0;
@@ -461,32 +462,34 @@ ul {
     z-index: 1000;
     display: flex;
     justify-content: center;
-    /* Always Center Child */
     padding: 30px 0;
-    pointer-events: none;
-    /* Let clicks pass through empty space */
-    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    background: transparent !important;
-    border: none;
-    box-shadow: none;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    /* Ivide !important venda */
 }
 
-.header.sticky {
-    transform: translateY(0);
-    /* No padding resize on sticky */
+/* Scroll cheyyumpol background varaan ulla logic */
+.header.scrolled {
+    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* Apply Pill Styles to Content Container */
 .header-content {
     width: 100%;
     max-width: var(--container-max-width);
-    /* Optimized transition: specific props only */
-    transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: auto;
-    /* Re-enable clicks */
-    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0 20px;
-    /* Default container padding */
+    pointer-events: auto;
+}
+
+/* Contact Page padding (Ettavum thazhe ittalum mathi) */
+.studio-contact {
+    padding-top: 180px !important;
 }
 
 
