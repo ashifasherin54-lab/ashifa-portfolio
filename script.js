@@ -409,20 +409,10 @@ window.addEventListener("load", () => {
         document.getElementById("introOverlay").style.display = "none";
     }, 3500);
 });
-// Navbar Scroll Logic
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header'); // Nammude navbar select cheyyunnu
 
-    if (window.scrollY > 50) {
-        // 50px-il kooduthal scroll cheythaal background varum
-        header.classList.add('scrolled');
-    } else {
-        // Mukalil ethumpol background pogum
-        header.classList.remove('scrolled');
-    }
-});
 
-// Navbar Scroll Logic - 
+
+// Navbar Scroll Logic 
 function handleScroll() {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) {
@@ -512,6 +502,7 @@ const initCodeAnimation = () => {
 // --------------------------------------------------------------------------
 // Contact Form Logic (Reliable & Decoupled)
 // --------------------------------------------------------------------------
+// Function Call cheyyaan njan ippo ithu thazhe parayunna pole maatti ezhuthiyaal work aakum
 const initContactForm = () => {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
@@ -519,15 +510,11 @@ const initContactForm = () => {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Values edukkunnu - IDs okke ippo HTML-umaayi exact match aanu
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('Subject').value.trim();
+        const subject = document.getElementById('subject').value.trim(); // Matching small 's'
         const message = document.getElementById('message').value.trim();
-
-        if (!name || !email || !subject || !message) {
-            alert("Please fill all fields");
-            return;
-        }
 
         const whatsappNumber = '918848798636';
         const text = encodeURIComponent(
@@ -544,37 +531,20 @@ const initContactForm = () => {
         if (formStatus) {
             formStatus.innerText = 'PREPARING TRANSMISSION...';
             formStatus.style.opacity = '1';
-            formStatus.style.color = 'var(--accent-primary)';
         }
 
-        const activeBtn = document.querySelector(".studio-submit") || document.querySelector(".silk-submit");
-        if (activeBtn && typeof gsap !== 'undefined') {
-            gsap.to(activeBtn, {
-                scale: 0.95,
-                opacity: 0.5,
-                duration: 0.3
-            });
-        }
-
+        // WhatsApp redirection
         setTimeout(() => {
-            // Reliable redirection
             window.location.href = whatsappURL;
-
-            setTimeout(() => {
-                contactForm.reset();
-                if (activeBtn && typeof gsap !== 'undefined') gsap.to(activeBtn, { scale: 1, opacity: 1, duration: 0.5 });
-                if (formStatus) {
-                    formStatus.innerText = 'MESSAGE SENT.';
-                    setTimeout(() => {
-                        gsap.to(formStatus, { opacity: 0, duration: 1 });
-                    }, 3000);
-                }
-            }, 500);
         }, 1000);
-
-        return false;
     });
 };
+
+// Ithaanu ninte prashnam! Ee vari illathe logic work aavilla:
+document.addEventListener('DOMContentLoaded', initContactForm);
+
+// IMPORTANT: Ee function ivide call cheyyuka
+initContactForm();
 
 // Silk/Studio Minimalist Interaction Architecture (Motion-Dependent)
 const setupContactInteractions = () => {
@@ -755,3 +725,6 @@ if (lenis) {
         });
     }
 }
+
+
+

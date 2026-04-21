@@ -453,6 +453,7 @@ ul {
 /* Header Styles */
 /* Header Styles */
 /* --- HEADER & NAVBAR FIXED LOGIC --- */
+/* --- FINAL HEADER FIX --- */
 .header {
     position: fixed;
     top: 0;
@@ -462,34 +463,38 @@ ul {
     z-index: 1000;
     display: flex;
     justify-content: center;
-    padding: 30px 0;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px 0;
+    /* Mobile-il kooduthal space edukkaathirikkan padding kurachu */
+    transition: all 0.4s ease;
     background: transparent;
-    /* Ivide !important venda */
 }
 
-/* Scroll cheyyumpol background varaan ulla logic */
+/* Scroll cheyyumpol background varaan */
 .header.scrolled {
-    padding: 15px 0;
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 12px 0;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.header-content {
-    width: 100%;
-    max-width: var(--container-max-width);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    pointer-events: auto;
+/* IMPORTANT: Mobile-il content header-inte pinnil pogaathirikkan */
+@media (max-width: 768px) {
+    main {
+        padding-top: 80px;
+        /* Ithu kodukkunnathode content thazhekk erungi vannolum */
+    }
+
+    .studio-contact,
+    .process-section,
+    section {
+        padding-top: 100px !important;
+        /* Ella section-num extra space */
+    }
 }
 
-/* Contact Page padding (Ettavum thazhe ittalum mathi) */
+/* Contact page spacing for Desktop */
 .studio-contact {
-    padding-top: 180px !important;
+    padding-top: 150px !important;
 }
 
 
@@ -7784,4 +7789,86 @@ body {
     .cta-info-inner {
         max-width: 100%;
     }
+}
+
+
+/* --- FIXES ONLY --- */
+
+.side-slider-section {
+    height: 400vh;
+    /* Scroll cheyyan vendulla space */
+    background: #000;
+    position: relative;
+}
+
+.sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 5%;
+    gap: 40px;
+}
+
+.title-column {
+    flex: 0 0 350px;
+}
+
+.main-title {
+    font-size: 80px !important;
+    font-weight: 800;
+    color: #fff;
+    line-height: 0.9;
+}
+
+.tag-text {
+    color: #6366f1;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.slider-window {
+    flex: 1;
+    overflow: visible;
+}
+
+.slider-track {
+    display: flex;
+    gap: 30px;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.p-card {
+    min-width: 420px;
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 32px;
+    padding: 50px;
+    color: #fff;
+}
+
+.p-card.highlight {
+    border-color: #6366f1;
+}
+
+.step-label {
+    font-size: 1.6rem !important;
+    /* Step size increased */
+    font-weight: 800;
+    color: #888;
+    display: block;
+    margin-bottom: 100px;
+}
+
+.p-card h3 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.p-card p {
+    color: #888;
+    line-height: 1.6;
 }

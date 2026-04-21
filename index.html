@@ -23,6 +23,125 @@
         .skip-intro body {
             overflow: auto !important;
         }
+
+
+        /* --- Nammude Puthiya Spacing Fix (Ithu add cheyyuka) --- */
+
+        header.header {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 9999 !important;
+            transition: all 0.4s ease;
+        }
+
+        /* Scroll cheyyumpol background varaan */
+        header.header.sticky {
+            background: #ffffff !important;
+            padding: 12px 0 !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* Process section header-inte pinnil marayaathirikkan */
+        #process,
+        .process-section {
+            padding-top: 120px !important;
+            scroll-margin-top: 100px;
+        }
+
+        @media (max-width: 768px) {
+
+            #process,
+            .process-section {
+                padding-top: 100px !important;
+            }
+        }
+
+        /* Process section-u  */
+        #process {
+            display: block !important;
+            position: relative !important;
+            padding-top: 180px !important;
+            margin-top: 0 !important;
+            background-color: #000 !important;
+            width: 100% !important;
+            overflow: visible !important;
+        }
+
+
+        @media (max-width: 768px) {
+            #process {
+                padding-top: 130px !important;
+            }
+        }
+
+        /* Process Section Force Display */
+        #process {
+            display: block !important;
+            position: relative !important;
+            padding-top: 180px !important;
+            /* Header space */
+            background-color: #000 !important;
+            z-index: 99 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* All headings and text inside process section */
+        #process h1,
+        #process h2,
+        #process h3,
+        #process p,
+        #process span,
+        #process div {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block;
+        }
+
+        /* Cards Force Display */
+        .process-section .card,
+        .process-card,
+        .process-step {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+
+
+        .process-section .row,
+        .process-grid {
+            display: flex !important;
+            flex-wrap: wrap;
+            gap: 30px !important;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+
+        .process-card,
+        .card {
+            margin-bottom: 20px !important;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .process-grid {
+                gap: 20px !important;
+            }
+        }
+
+        #process {
+            padding-top: 180px !important;
+            background-color: #000 !important;
+        }
+
+        .step-tag {
+            font-size: 1.4rem !important;
+        }
     </style>
 
 </head>
@@ -427,6 +546,7 @@
             </section>
 
             <!-- How We Work Section (Premium Dark Process) -->
+            <!-- How We Work Section (Premium Dark Process) -->
             <section id="process" class="process-section">
                 <div class="container-fluid process-layout">
                     <!-- Sticky Title Area -->
@@ -481,6 +601,7 @@
                     </div>
                 </div>
             </section>
+
 
 
 
